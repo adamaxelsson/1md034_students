@@ -4,13 +4,15 @@
       <title>Burger Jarl</title>
       <meta charset="utf-8"/>
     </head>
+
+    
     <body>
       <main>
 	<h1>Welcome to Burger Jarl</h1>
 	<section>
 	  <h3>Select your burger of choice!</h3>
-	  <table>
 
+	  <table>
 	    <tr>
 	      <th>Bacon & Cheese Burger</th>
 	      <th>Veggie Burger</th>
@@ -27,12 +29,11 @@
 	      <td>
 		<ul>
 		  <li>Beef from locally bred cattle</li>
-		  <li>Crispy Bacon</li>
-		  <li>Melted Cheddar Cheese</li>
+		  <li>Gluten free</li>
 		  <li>800 kcal</li>
 		</ul>
 	      </td>
-	       
+	      
 	      <ul>
 		<td>
 		  <li>Patty made from beans!</li>
@@ -45,17 +46,14 @@
 		<ul>
 		  <li>Deep fried chicken</li>
 		  <li>Lactose free</li>
-		  <li>Homemade mustard dressing</li>
 		  <li>700 kcal</li>
 		</ul>
 	      </td>
 	    </tr>
-
-	    
-	  
 	    
 	  </table>
 	</section>
+	
 	<section id="delivery information">
 	  <h3>Delivery information</h3>
 	  <h4>Please provide the necessary delivery information</h4>
@@ -81,12 +79,47 @@
 	      <input type="number" id="HouseNumber" name="name" required="required" placeholder="House Number" />
 	    </p>
 	    
+	    <p>
+	      <label for="payment">Payment method</label><br />
+	      <select id="payment" name="payment">
+		<option>Swish</option>
+		<option selected="selected">Card</option>
+		<option>Cash</option>
+		<option>Invoice</option>
+	      </select>
+	    </p>
+
+	    <p>
+	      <label>Gender</label><br>
+	      <input type="radio" checked="checked" id="Gender" name="gender" />
+	      <label>Woman</label>
+	      <br>
+	      
+	      <input type="radio" id="Gender" name="gender" />
+	      <label>Man</label>
+	      <br>
+	      
+	      <input type="radio" id="Gender" name="gender" />
+	      <label>Other</label>
+	      <br>
+	      
+	      <input type="radio" id="Gender" name="gender"/>
+	      <label>Do not wish to answer</label>
+	      <br>
+	    </p>
+	                            
+
 	  </form>
+
+	  
 	  
 	</section>
-      </main>
-      <footer>
+	<input type="submit" value="Send" />
+	<footer>
+	  <hr>
+	  <p>Made by Adam Axelsson</p>
       </footer>
+      </main>
     </body>
 </html>
 

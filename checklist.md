@@ -28,8 +28,8 @@ Create an index.html file which contains:
 	- [X] E-Mail Address
 	- [X] Street
 	- [X] House Number (only allowing numbers in this field)
-	- [ ] Gender (male, female, do not wish to provide as radio buttons)
-- [ ] A button to place the order
+	- [X] Gender (male, female, do not wish to provide as radio buttons)
+- [X] A button to place the order
 
 ## 03 CSS
 
