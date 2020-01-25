@@ -17,12 +17,12 @@ Before you submit the different parts of your lab, make sure that your project f
 
 Create an index.html file which contains:
 - [X] A title
-- [ ] A main headline and two section headlines
-- [ ] Semantic tags that correspond to the parts of your page
+- [X] A main headline and two section headlines
+- [X] Semantic tags that correspond to the parts of your page
 - [ ] A section to select burgers that contains at least three items. Each item has at least:
-	- [ ] A name
-	- [ ] An image
-	- [ ] Information about allergies 
+	- [X] A name
+	- [X] An image
+	- [X] Information about allergies 
 - [ ] A section to collect customer information:
 	- [ ] First- and Last Name (in one field)
 	- [ ] E-Mail Address
