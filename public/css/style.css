@@ -1,0 +1,14 @@
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+body {
+    font-family: "Franklin Gothic Medium Condensed";
+    color: black;
+    font-size: 125%;
+}
+
+.allergies {
+    color: red;
+    font-weight: bold;
+}
+
+  
