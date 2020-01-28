@@ -50,5 +50,20 @@ section {
     padding: 10px 10px;
 }
 
+#header {
+    margin: 10px 10px 10px 10px;
+    padding: 5px 5px;
+    height: 250px;
+    overflow: hidden;
+}
 
+#headerImg {
+    opacity: 0.55;
+    width: 100%;
+    height: auto;
+}
+
+#headerHeading {
+    position: absolute;
+}
   
