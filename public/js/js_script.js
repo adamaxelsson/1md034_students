@@ -19,8 +19,9 @@ let burger4 = new menuItem("New Burger", "Info", "Allergies!", "kcal", "https://
 
 let burger5 = new menuItem("New Burger", "Info", "Gluten free!", "kcal", "https://d1doqjmisr497k.cloudfront.net//-/media/franksus18/recipe-images/franks_redhot_bacon_cheeseburger_300x300.jpg");
 
-console.log( burger1.getKcal() );
-console.log( burger2.getKcal() );
-console.log( burger3.getKcal() );
-console.log( burger4.getKcal() );
-console.log( burger5.getKcal() );
+document.getElementById("item1").innerHTML = burger1.getKcal();
+document.getElementById("item2").innerHTML = burger2.getKcal();
+document.getElementById("item3").innerHTML = burger3.getKcal();
+document.getElementById("item4").innerHTML = burger4.getKcal();
+document.getElementById("item5").innerHTML = burger5.getKcal();
+
