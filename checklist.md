@@ -52,18 +52,18 @@ Add the following style/behaviour to your website (mostly in style.css but also 
 
 ## 04 JavaScript and Vue
 
-- [ ] Create js_script.js and vue_script.js
-- [ ] Link to js_script.js, vue_script.js as well as vue.js in index.html
-- [ ] Add a menuItem constructor with relevant properties to js_script.js
-- [ ] Also use your menuItem constructor to instantiate a total of five burgers in js_script.js
-- [ ] Add the Vue instance example code to vue_script.js 
-- [ ] Update js_script.js with your JSFiddle code and update vue_script.js with your Vue version
-- [ ] Update js_script.js and vue_script.js again with your array + loop solutions
-- [ ] Rewrite js_script.js and index.html to insert your five burgers dynamically to the burger selection section using JavaScript
-- [ ] Rewrite vue_script.js and index.html to insert your five burgers dynamically to the burger selection section using Vue
-- [ ] Create a menu.js file with an array containing your five burgers in JSON format
-- [ ] Remove the menuItem constructor and the instantiation of your five burgers from js_script.js
-- [ ] Update vue_script.js to get the burgers from menu.js instead
+- [X] Create js_script.js and vue_script.js
+- [X] Link to js_script.js, vue_script.js as well as vue.js in index.html
+- [X] Add a menuItem constructor with relevant properties to js_script.js
+- [X] Also use your menuItem constructor to instantiate a total of five burgers in js_script.js
+- [X] Add the Vue instance example code to vue_script.js 
+- [X] Update js_script.js with your JSFiddle code and update vue_script.js with your Vue version
+- [X] Update js_script.js and vue_script.js again with your array + loop solutions
+- [X] Rewrite js_script.js and index.html to insert your five burgers dynamically to the burger selection section using JavaScript
+- [X] Rewrite vue_script.js and index.html to insert your five burgers dynamically to the burger selection section using Vue
+- [X] Create a menu.js file with an array containing your five burgers in JSON format
+- [X] Remove the menuItem constructor and the instantiation of your five burgers from js_script.js
+- [X] Update vue_script.js to get the burgers from menu.js instead
 - [ ] Create an event listener in js_script.js connected to your order button
 - [ ] Add a function to js_script.js connected to the order button in index.html that collects the user's input from the text boxes, the gender and all items on the order (that have the checkbox checked) into an array and also prints out the contents to your console 
 - [ ] Comment out your previous event listener and use Vue's corresponding functionality in vue_script.js and index.html to react on button presses

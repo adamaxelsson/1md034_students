@@ -63,4 +63,4 @@ for (i; i<array.length; i++){
     burgerGrid.appendChild(divElement);
  }	    
 		    
-**/		    
+**/  

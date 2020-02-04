@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
     <script src="js/vue_script.js" defer></script>
     <script src="https://vuejs.org/js/vue.js"></script>
@@ -25,8 +26,9 @@
 	    <div v-for="x in array">
 	      
 	      <ul>
-                <li> {{ x.getKcal() }} </li>
+                <li> {{ x.name }} </li>
 		<img v-bind:src="x.img">
+		<li> {{ x.kcal }} </li>
                 <div v-if = "x.lactose" >
                   <li class = "allergies">
                     Contains lactose! 
