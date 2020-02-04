@@ -21,6 +21,33 @@
 	  <h3 align="center" >Select your burger of choice!</h3>
 
 	  <div id="burgerTable" class="table">
+	    
+	    <div v-for="x in array">
+	      
+	      <ul>
+                <li> {{ x.getKcal() }} </li>
+		<img v-bind:src="x.img">
+                <div v-if = "x.lactose" >
+                  <li class = "allergies">
+                    Contains lactose! 
+                  </li>
+                </div>
+                
+                <div v-if = "x.vegan">
+                  <li class = "allergies">
+                    Vegan friendly!
+                  </li>               
+                </div>
+                
+                <div v-if = "x.gluten">
+                  <li class="allergies">
+                    Contains gluten!
+                  </li>     
+                </div>
+	      </ul>
+	      
+	      
+	    </div>
 	    <!--
 	    <div class="burger" id="burger1">
 	      <td class="burgerName">Bacon & Cheese Burger</td>

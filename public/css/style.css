@@ -43,13 +43,13 @@ button:hover {
     color: black;
 }
 
-
+/*
 #burgerTable {
 
     margin-left: 1%;
     width: 10vw;
 }
-
+*/
 section {
     margin: 10px 10px 10px 10px;
     padding: 10px 10px;
@@ -87,7 +87,7 @@ section {
      background-color: black;
      color: grey;
      text-align: center;
-     padding: 10px;
+     padding: 5px;
 }
 
 img{
