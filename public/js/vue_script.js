@@ -1,4 +1,4 @@
-/**
+
 function menuItem(name, info, allergies, kcal, img, lactose, vegan, gluten){
     this.name = name;
     this.info = info;
@@ -32,4 +32,4 @@ const vm = new Vue({
   }
 
 })
-**/
+

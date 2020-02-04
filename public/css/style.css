@@ -43,13 +43,13 @@ button:hover {
     color: black;
 }
 
-/**
+
 #burgerTable {
 
-    margin-left: 5.5%;
-    width: 100%
+    margin-left: 1%;
+    width: 10vw;
 }
-**/
+
 section {
     margin: 10px 10px 10px 10px;
     padding: 10px 10px;
@@ -82,11 +82,18 @@ section {
 
 #burgerTable {
      display: grid;
-     grid-gap: 105px;
-     grid-template-columns: 23.3em 23.3em 23.3em;
+     grid-gap: 15px;
+     grid-template-columns: 15em 15em 15em 15em 15em;
      background-color: black;
-     color: #444;
- }
+     color: grey;
+     text-align: center;
+     padding: 10px;
+}
+
+img{
+    width: 15em;
+    height: 15em;
+}
 
 .burger {
      background-color: #444;
@@ -107,6 +114,10 @@ section {
  }
 
  #burger3{
+     grid-column: 3 /span 1;
+ }
+
+ #burger4{
      grid-column: 3 /span 1;
  }
 
