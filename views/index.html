@@ -28,6 +28,9 @@
 	      <ul>
                 <li> {{ x.name }} </li>
 		<img v-bind:src="x.img">
+		<p>
+		  <input v-bind:id="x.name" v-bind:value="x.name" v-model="burgerList" type="checkbox">
+		</p>
 		<li> {{ x.kcal }} </li>
                 <div v-if = "x.lactose" >
                   <li class = "allergies">
@@ -100,27 +103,27 @@
 	  <form>
 	    <p>
 	      <label for="FullName">Enter your full name</label><br>
-	      <input type="text" id="FullName" name="name" required="required" placeholder="Full Name" />
+	      <input v-model="name" type="text" id="FullName" name="name" required="required" placeholder="Full Name" />
 	    </p>
 
 	    <p>
 	      <label for="Email">Enter your email-address</label><br>
-	      <input type="text" id="Email" name="name" required="required" placeholder="Email" />
+	      <input v-model="email" type="text" id="Email" name="name" required="required" placeholder="Email" />
 	    </p>
 
 	    <p>
 	      <label for="Street">Enter your street name</label><br>
-	      <input type="text" id="Street" name="name" required="required" placeholder="Street name" />
+	      <input v-model="street" type="text" id="Street" name="name" required="required" placeholder="Street name" />
 	    </p>
 
 	    <p>
 	      <label for="HouseNumber">Enter your house number</label><br>
-	      <input type="number" id="HouseNumber" name="name" required="required" placeholder="House Number" />
+	      <input v-model="houseNumber" type="number" id="houseNumber" name="name" required="required" placeholder="House Number" />
 	    </p>
 	    
 	    <p>
 	      <label for="payment">Payment method</label><br />
-	      <select id="payment" name="payment">
+	      <select v-model="payment" id="payment" name="payment">
 		<option>Swish</option>
 		<option selected="selected">Card</option>
 		<option>Cash</option>
@@ -130,30 +133,32 @@
 
 	    <p>
 	      <label>Gender</label><br>
-	      <input type="radio" checked="checked" id="Gender" name="gender" />
+	      <input v-model="woman" type="radio" checked="checked" value="woman" id="woman" name="gender" />
 	      <label>Woman</label>
 	      <br>
 	      
-	      <input type="radio" name="gender" />
+	      <input v-model="man" type="radio" value="man" name="gender" id="man"/>
 	      <label>Man</label>
 	      <br>
 	      
-	      <input type="radio" name="gender" />
+	      <input v-model="other" type="radio" value="other" name="gender" id="other"/>
 	      <label>Other</label>
 	      <br>
 	      
-	      <input type="radio" name="gender"/>
+	      <input v-model="unknown" type="radio" value="unknown" name="gender" id="unknown"/>
 	      <label>Do not wish to answer</label>
 	      <br>
 	    </p>
 	                            
-
+	   
 	  </form>
 
-	  
-	  
+	  <button v-on:click="markDone(name, email, street, houseNumber, payment, woman, man, other, unknown)" id="sendInfo" type="submit">Send Information</button >
+	  <div id="orderDiv">
+
+	  </div>
 	</section>
-	<button type="submit">Send Information</button>
+	
 	<footer>
 	  <hr>
 	  <p>Made by Adam Axelsson</p>

@@ -1,4 +1,4 @@
-/**
+/*
 function menuItem(name, info, kcal, img, lactose, vegan, gluten){
     this.name = name;
     this.info = info;
@@ -61,6 +61,35 @@ for (i; i<array.length; i++){
     }
     divElement.appendChild(listItem);
     burgerGrid.appendChild(divElement);
- }	    
-		    
-**/  
+}
+
+let myButton = document.getElementById("sendInfo");
+
+myButton.addEventListener("click", buttonFunc);    
+
+function buttonFunc(){
+    console.log("Button clicked");
+    var name = document.getElementById("FullName").value;
+    var email = document.getElementById("Email").value;
+    var streetName = document.getElementById("Street").value;
+    var houseNumber = document.getElementById("HouseNumber").value;
+    var payment = document.getElementById("payment").value;
+    if (document.getElementById("woman").checked){
+	var gender = "woman";
+    }
+    if (document.getElementById("man").checked){
+	var gender = "man";
+    }
+    if (document.getElementById("other").checked){
+	var gender = "other";
+    }
+    if (document.getElementById("unknown").checked){
+	var gender = "unknown";
+    }
+    let info = [name, email, streetName, houseNumber, payment, gender];
+
+    for(x in info){
+	console.log(info[x]);
+    }
+}
+*/

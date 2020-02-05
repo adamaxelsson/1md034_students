@@ -23,13 +23,80 @@ let burger4 = new menuItem("Special Burger", "Info", "900 kcal", "https://cdn-rd
 let burger5 = new menuItem("Burger Burger", "Info", " 750 kcal", "https://www.santamariaworld.com/optimized/maximum/globalassets/_recipes/bbq/kentucky_burger.jpg?id=2357", false, false, true);
 
 var array = new Array(burger1, burger2, burger3, burger4, burger5);
-*/
 
+**/
 const vm = new Vue({
-	el: '#burgerTable',
-  data: {
-  array: burgers
-  }
+    el: '#burgerTable',
+    data: {
+	array: burgers,
+	burgerList: []
+    },
+    methods: {
+	getBurgers: function(){
+	    return this.burgerList;
+	}
+    }
 
 })
+
+const info = new Vue({
+    el: '#deliverySection',
+    data: {
+	name: "",
+	email: "",
+	street: "",
+	houseNumber: "",
+	payment: "",
+	woman: "",
+	man: "",
+	other: "",
+	unknown: ""
+    },
+    methods: {
+        markDone: function(name, email, street, houseNumber, payment, woman, man, other, unknown) {
+
+	    let divElement = document.getElementById("orderDiv");
+	    let nameItem = document.createElement("li");
+	    nameItem.innerHTML = name;
+	    let burgers = vm.getBurgers();
+	    let emailItem = document.createElement("li");
+	    emailItem.innerHTML = email;
+	    let streetItem = document.createElement("li");
+	    streetItem.innerHTML = street;
+	    let houseNumberItem = document.createElement("li");
+	    houseNumberItem.innerHTML = houseNumber;
+	    let paymentItem = document.createElement("li");
+	    paymentItem.innerHTML = payment;
+	    let gender = document.createElement("li");
+	    if (woman){
+		gender.appendChild(document.createTextNode("Woman"));
+	    }
+	    if (man){
+		gender.appendChild(document.createTextNode("Man"));
+	    }
+	    if (other){
+		gender.appendChild(document.createTextNode("Other"));
+	    }
+	    if (unknown){
+		gender.appendChild(document.createTextNode("Do not wish to answer!"));
+	    }
+	    divElement.appendChild(nameItem);
+	    divElement.appendChild(emailItem);
+	    divElement.appendChild(streetItem);
+	    divElement.appendChild(houseNumberItem);
+	    divElement.appendChild(paymentItem);
+	    divElement.appendChild(gender);
+
+	    for(burger in burgers){
+		console.log(burgers);
+		let currentBurger = document.createElement("li");
+		currentBurger.innerHTML = (burgers[burger]);
+		divElement.appendChild(currentBurger);
+	    }
+	
+	
+        }
+    }
+})
+
 
