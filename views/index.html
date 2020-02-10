@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="css/deli-very.css">
+    <script src="/socket.io/socket.io.js" defer></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
     <script src="js/vue_script.js" defer></script>
@@ -110,7 +112,7 @@
 	      <label for="Email">Enter your email-address</label><br>
 	      <input v-model="email" type="text" id="Email" name="name" required="required" placeholder="Email" />
 	    </p>
-
+	    <!--
 	    <p>
 	      <label for="Street">Enter your street name</label><br>
 	      <input v-model="street" type="text" id="Street" name="name" required="required" placeholder="Street name" />
@@ -120,7 +122,7 @@
 	      <label for="HouseNumber">Enter your house number</label><br>
 	      <input v-model="houseNumber" type="number" id="houseNumber" name="name" required="required" placeholder="House Number" />
 	    </p>
-	    
+	    -->
 	    <p>
 	      <label for="payment">Payment method</label><br />
 	      <select v-model="payment" id="payment" name="payment">
@@ -153,10 +155,23 @@
 	   
 	  </form>
 
-	  <button v-on:click="markDone(name, email, street, houseNumber, payment, woman, man, other, unknown)" id="sendInfo" type="submit">Send Information</button >
+	  <h1> Click in the map! </h1>
+	  <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+	  <div class="view-box">
+	    <div id="dots" v-on:click="addOrder">
+              <div 
+		v-for="(order, key) in orders"
+		v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+		{{key}}
+              </div>
+	    </div>
+	  </div>
+	  
+	  <button v-on:click="markDone(name, email, payment, woman, man, other, unknown)" id="sendInfo" type="submit">Send Information</button >
 	  <div id="orderDiv">
 
 	  </div>
+	  
 	</section>
 	
 	<footer>
