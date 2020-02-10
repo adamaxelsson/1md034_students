@@ -55,43 +55,54 @@ const info = new Vue({
 	unknown: "",
 	orders: {},
 	lastOrder: 0,
-	localOrder: {orderId: "", details: {x: 0, y: 0}, orderItems: {}},
+	localOrder: {orderId: "", details: {x: 0, y: 0}, orderItems: {}, customerInfo: {}},
     },
 
     methods: {
-        markDone: function(name, email, street, houseNumber, payment, woman, man, other, unknown) {
+        markDone: function(name, email, payment, woman, man, other, unknown) {
 
 	    let divElement = document.getElementById("orderDiv");
 	    let nameItem = document.createElement("li");
-	    nameItem.innerHTML = name;
+	    nameItem.innerHTML = "Name: " + name;
 	    let burgers = vm.getBurgers();
 	    let emailItem = document.createElement("li");
-	    emailItem.innerHTML = email;
+	    emailItem.innerHTML = "Email: " + email;
 	    let paymentItem = document.createElement("li");
-	    paymentItem.innerHTML = payment;
+	    paymentItem.innerHTML = "Payment method: " + payment;
+	    let location = document.createElement("li");
+	    location.innerHTML = "Location: " + this.localOrder.details.x.toFixed(3) + " " + this.localOrder.details.y.toFixed(3);
+	    
 	    let gender = document.createElement("li");
 	    if (woman){
-		gender.appendChild(document.createTextNode("Woman"));
+		var genderInfo = "Woman";
+		gender.appendChild(document.createTextNode("Gender: Woman"));
 	    }
 	    if (man){
-		gender.appendChild(document.createTextNode("Man"));
+		var genderInfo = "Man";
+		gender.appendChild(document.createTextNode("Gender: Man"));
 	    }
 	    if (other){
-		gender.appendChild(document.createTextNode("Other"));
+		var genderInfo = "Other";
+		gender.appendChild(document.createTextNode("Gender: Other"));
 	    }
 	    if (unknown){
-		gender.appendChild(document.createTextNode("Do not wish to answer!"));
+		var genderInfo = "Do not wish to answer!";
+		gender.appendChild(document.createTextNode("Gender: Do not wish to answer!"));
 	    }
 	    divElement.appendChild(nameItem);
 	    divElement.appendChild(emailItem);
 	    divElement.appendChild(paymentItem);
 	    divElement.appendChild(gender);
+	    divElement.appendChild(location);
+	    let custInfo = [
+		name, email, payment, genderInfo
+	    ]
+	    this.addOrder(custInfo);
 
-	    this.addOrder();
-	    
+
 	    for(var burger in burgers){
 		let currentBurger = document.createElement("li");
-		currentBurger.innerHTML = (burgers[burger]);
+		currentBurger.innerHTML = "Selected burger: " + (burgers[burger]);
 		divElement.appendChild(currentBurger);
 	    }
 	    
@@ -103,7 +114,7 @@ const info = new Vue({
 	    this.lastOrder ++;
 	    return this.lastOrder;
 	},
-	addOrder: function() {
+	addOrder: function(custInfo) {
 	    /* When you click in the map, a click event object is sent as parameter
 	     * to the function designated in v-on:click (i.e. this one).
 	     * The click event object contains among other things different
@@ -114,6 +125,7 @@ const info = new Vue({
 		orderId: this.getNext(),
 		details: {x: this.localOrder.details.x, y: this.localOrder.details.y},
 		orderItems: vm.getBurgers(),
+		customerInfo: custInfo,
 	    });
 	},
 	displayOrder: function(event) {
