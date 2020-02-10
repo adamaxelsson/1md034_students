@@ -48,31 +48,16 @@ const info = new Vue({
     data: {
 	name: "",
 	email: "",
-	street: "",
-	houseNumber: "",
 	payment: "",
 	woman: "",
 	man: "",
 	other: "",
 	unknown: "",
-	orders: {}
+	orders: {},
+	lastOrder: 0,
+	localOrder: {orderId: "", details: {x: 0, y: 0}, orderItems: {}},
     },
-    created: function() {
-	/* When the page is loaded, get the current orders stored on the server.
-	 * (the server's code is in app.js) */
-	socket.on('initialize', function(data) {
-	    this.orders = data.orders;
-	}.bind(this));
 
-	/* Whenever an addOrder is emitted by a client (every open map.html is
-	 * a client), the server responds with a currentQueue message (this is
-	 * defined in app.js). The message's data payload is the entire updated
-	 * order object. Here we define what the client should do with it.
-	 * Spoiler: We replace the current local order object with the new one. */
-	socket.on('currentQueue', function(data) {
-	    this.orders = data.orders;
-	}.bind(this));
-    },
     methods: {
         markDone: function(name, email, street, houseNumber, payment, woman, man, other, unknown) {
 
@@ -82,10 +67,6 @@ const info = new Vue({
 	    let burgers = vm.getBurgers();
 	    let emailItem = document.createElement("li");
 	    emailItem.innerHTML = email;
-	    let streetItem = document.createElement("li");
-	    streetItem.innerHTML = street;
-	    let houseNumberItem = document.createElement("li");
-	    houseNumberItem.innerHTML = houseNumber;
 	    let paymentItem = document.createElement("li");
 	    paymentItem.innerHTML = payment;
 	    let gender = document.createElement("li");
@@ -103,30 +84,39 @@ const info = new Vue({
 	    }
 	    divElement.appendChild(nameItem);
 	    divElement.appendChild(emailItem);
-	    divElement.appendChild(streetItem);
-	    divElement.appendChild(houseNumberItem);
 	    divElement.appendChild(paymentItem);
 	    divElement.appendChild(gender);
 
-	    for(burger in burgers){
-		console.log(burgers);
+	    this.addOrder();
+	    
+	    for(var burger in burgers){
 		let currentBurger = document.createElement("li");
 		currentBurger.innerHTML = (burgers[burger]);
 		divElement.appendChild(currentBurger);
 	    }
-	    
 	    
         },
 	getNext: function() {
 	    /* This function returns the next available key (order number) in
 	     * the orders object, it works under the assumptions that all keys
 	     * are integers. */
-	    let lastOrder = Object.keys(this.orders).reduce(function(last, next) {
-		return Math.max(last, next);
-	    }, 0);
-	    return lastOrder + 1;
+	    this.lastOrder ++;
+	    return this.lastOrder;
 	},
-	addOrder: function(event) {
+	addOrder: function() {
+	    /* When you click in the map, a click event object is sent as parameter
+	     * to the function designated in v-on:click (i.e. this one).
+	     * The click event object contains among other things different
+	     * coordinates that we need when calculating where in the map the click
+	     * actually happened. */
+
+	    socket.emit('addOrder', {
+		orderId: this.getNext(),
+		details: {x: this.localOrder.details.x, y: this.localOrder.details.y},
+		orderItems: vm.getBurgers(),
+	    });
+	},
+	displayOrder: function(event) {
 	    /* When you click in the map, a click event object is sent as parameter
 	     * to the function designated in v-on:click (i.e. this one).
 	     * The click event object contains among other things different
@@ -136,14 +126,14 @@ const info = new Vue({
 		x: event.currentTarget.getBoundingClientRect().left,
 		y: event.currentTarget.getBoundingClientRect().top,
 	    };
-	    socket.emit('addOrder', {
-		orderId: this.getNext(),
+	    this.localOrder =  {
+		orderId: "T",
 		details: {
 		    x: event.clientX - 10 - offset.x,
 		    y: event.clientY - 10 - offset.y,
 		},
-		orderItems: ['Beans', 'Curry'],
-	    });
+		orderItems: vm.getBurgers(),
+	    };
 	}
     }
 })
